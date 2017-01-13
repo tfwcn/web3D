@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "normal": [
+            { "model": "spruce_planks" },
+            { "model": "spruce_planks_1" },
+            { "model": "spruce_planks_2" }
+        ]
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "normal": [ { "model": "tall_grass" },
+                    { "model": "tall_grass", "y": 90 },
+                    { "model": "tall_grass", "y": 180 },
+                    { "model": "tall_grass", "y": 270 }
+        ]
+    }
+}

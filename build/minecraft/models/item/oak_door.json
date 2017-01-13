@@ -1,0 +1,6 @@
+{
+    "parent": "item/aa_door",
+    "textures": {
+        "layer0": "items/door_wood"
+    }
+}

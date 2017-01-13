@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "normal":[ 
+                  { "model": "cobblestone_double" },
+                  { "model": "cobblestone_double_1" },
+                  { "model": "cobblestone_double_2" },
+                  { "model": "cobblestone_double_3" },
+                  { "model": "cobblestone_double_4" }
+                  ],
+        "all":    { "model": "cobblestone_double" }
+    }
+}

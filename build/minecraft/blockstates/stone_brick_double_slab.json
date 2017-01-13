@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "normal":[ { "model": "stone_brick_double_slab" },
+                   { "model": "stone_brick_double_slab_1" },
+                   { "model": "stone_brick_double_slab_2" }
+        ]
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+    "end": "blocks/slab_spruce_top",
+    "side": "blocks/stairs_spruce_front"
+    }
+}

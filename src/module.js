@@ -1,0 +1,1 @@
+document.write(test(1,2));

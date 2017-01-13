@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "normal": [
+            { "model": "bookshelf" },
+            { "model": "bookshelf", "y": 90 },
+            { "model": "bookshelf", "y": 180 },
+            { "model": "bookshelf", "y": 270 }
+        ]
+    }
+}

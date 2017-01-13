@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+    "particle": "blocks/stonebrick_mossy",
+    "end": "blocks/stonebrick_mossy_top_2",
+    "side": "blocks/stonebrick_mossy_2"
+    }
+}

@@ -1,0 +1,70 @@
+{
+"ambientocclusion": false,
+"textures": {
+    "particle": "blocks/door_birch_lower",
+    "door_birch_lower": "blocks/door_birch_lower"
+},
+"elements": [ 
+{
+    "from": [ 0, 14.5, 0.5 ],
+    "to": [ 3, 16, 2 ],
+    "faces": {
+        "down":  { "uv": [ 15, 1.5, 15.5, 0 ], "texture": "#door_birch_lower" },
+        "north": { "uv": [ 15, 0, 15.5, 1.5 ], "texture": "#door_birch_lower" },
+        "south": { "uv": [ 14, 0, 14.5, 1.5 ], "texture": "#door_birch_lower" },
+        "west":  { "uv": [ 14, 0, 15.5, 1.5 ], "texture": "#door_birch_lower" },
+        "east":  { "uv": [ 14, 0, 15.5, 1.5 ], "texture": "#door_birch_lower" }
+    }
+},
+{
+    "from": [ 0.5, 2.5, 13 ],
+    "to": [ 2.5, 16, 16 ],
+    "faces": {
+        "north": { "uv": [ 0.5, 0, 2.5, 13.5 ], "texture": "#door_birch_lower" },
+        "south": { "uv": [ 0.5, 0, 2.5, 13.5 ], "texture": "#door_birch_lower" },
+        "west":  { "uv": [ 3, 0, 0, 13.5 ], "texture": "#door_birch_lower" },
+        "east":  { "uv": [ 0, 0, 3, 13.5 ], "texture": "#door_birch_lower" }
+    }
+},
+{
+    "from": [ 0.5, 9.5, 3 ],
+    "to": [ 2.5, 12, 13 ],
+    "faces": {
+        "down":  { "uv": [ 0.5, 13, 2.5, 3 ], "texture": "#door_birch_lower" },
+        "up":    { "uv": [ 0.5, 3, 2.5, 13 ], "texture": "#door_birch_lower" },
+        "west":  { "uv": [ 3, 4, 13, 6.5 ], "texture": "#door_birch_lower" },
+        "east":  { "uv": [ 3, 4, 13, 6.5 ], "texture": "#door_birch_lower" }
+    }
+},
+{
+    "from": [ 0.5, 2.5, 0 ],
+    "to": [ 2.5, 16, 3 ],
+    "faces": {
+        "north": { "uv": [ 0.5, 0, 2.5, 13.5 ], "texture": "#door_birch_lower" },
+        "south": { "uv": [ 0.5, 0, 2.5, 13.5 ], "texture": "#door_birch_lower" },
+        "west":  { "uv": [ 16, 0, 13, 13.5 ], "texture": "#door_birch_lower" },
+        "east":  { "uv": [ 13, 0, 16, 13.5 ], "texture": "#door_birch_lower" }
+    }
+},
+{
+    "from": [ 0.5, 0, 0 ],
+    "to": [ 2.5, 2.5, 16 ],
+    "faces": {
+        "down":  { "uv": [ 0.5, 16, 2.5, 0 ], "texture": "#door_birch_lower" },
+        "up":    { "uv": [ 0.5, 0, 2.5, 16 ], "texture": "#door_birch_lower" },
+        "north": { "uv": [ 13.5, 13.5, 15.5, 16 ], "texture": "#door_birch_lower" },
+        "south": { "uv": [ 0.5, 13.5, 2.5, 16 ], "texture": "#door_birch_lower" },
+        "west":  { "uv": [ 16, 13.5, 0, 16 ], "texture": "#door_birch_lower" },
+        "east":  { "uv": [ 0, 13.5, 16, 16 ], "texture": "#door_birch_lower" }
+    }
+},
+{
+    "from": [ 1.5, 2.5, 3 ],
+    "to": [ 1.5625, 16, 13 ],
+    "faces": {
+        "west":  { "uv": [ 3, 0, 13, 13.5 ], "texture": "#door_birch_lower" },
+        "east":  { "uv": [ 3, 0, 13, 13.5 ], "texture": "#door_birch_lower" }
+    }
+}
+]
+}

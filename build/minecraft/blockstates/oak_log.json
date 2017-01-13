@@ -1,0 +1,37 @@
+{
+    "variants": {
+        "axis=y": [
+            { "model": "oak_log" },
+            { "model": "oak_log", "y": 180 },
+            { "model": "oak_log_1" },
+            { "model": "oak_log_1", "y": 180 },
+            { "model": "oak_log_2" },
+            { "model": "oak_log_2", "y": 180 }
+            ],
+
+        "axis=z": [
+            { "model": "oak_log_side" },
+            { "model": "oak_log_side", "x": 180, "z": 90 },
+            { "model": "oak_log_side", "z": 180 },
+            { "model": "oak_log_side", "x": 180, "z": 270 },
+            { "model": "oak_log_side_1" },
+            { "model": "oak_log_side_1", "x": 180, "z": 90 },
+            { "model": "oak_log_side_1", "z": 180 },
+            { "model": "oak_log_side_1", "x": 180, "z": 270 },
+            { "model": "oak_log_side_2" },
+            { "model": "oak_log_side_2", "x": 180, "z": 90 },
+            { "model": "oak_log_side_2", "z": 180 },
+            { "model": "oak_log_side_2", "x": 180, "z": 270 }
+            ],
+            
+        "axis=x": [
+            { "model": "oak_log_side", "y": 90 },
+            { "model": "oak_log_side", "y": 270 },
+            { "model": "oak_log_side_1", "y": 90 },
+            { "model": "oak_log_side_1", "y": 270 },
+            { "model": "oak_log_side_2", "y": 90 },
+            { "model": "oak_log_side_2", "y": 270 }
+            ],
+        "axis=none":  { "model": "oak_bark" }
+    }
+}
