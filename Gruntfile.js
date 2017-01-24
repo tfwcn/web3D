@@ -1,29 +1,82 @@
 module.exports = function (grunt) {
-
-    // Project configuration.
+    // 项目配置
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        uglify: {//压缩混淆插件
-            options: {
-                banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',//添加banner
-                //mangle: false, //不混淆变量名
-                //compress: false,//不压缩
-                //preserveComments: 'all', //不删除注释，还可以为 false（删除全部注释），some（保留@preserve @license @cc_on等注释）
-                footer: '\n/*! <%= pkg.name %> 最后修改于： <%= grunt.template.today("yyyy-mm-dd") %> */',//添加footer
+        clean: { //清除目标文件下文件
+            build: {
+                src: ['build']
+            }
+        },
+        copy: {
+            test: {
+                files: [
+                    {expand: true, cwd: 'src/', src: ['**'], dest: 'build/',flatten: true,filter: 'isFile'}
+                ]
             },
             build: {
-                files: {
-                    'build/index.min.js': ['src/index.js', 'src/module.js'],
-                    'build/3DTest.min.js': ['src/3DTest.js']
+                expand: true,
+                cwd: 'src/',
+                src: '**',//源文件目录下的所有文件
+                dest: 'build/',//目标文件路径，把源文件下的文件复制到该目录下
+                flatten: false,//用来指定是否忽略文件目录结构
+                filter: 'isFile',
+            }
+        },
+        uglify: {//压缩js文件
+            build: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/js', //js源文件目录
+                    src: '*.js', //所有js文件
+                    dest: 'build/js' //输出到此目录下
+                }]
+            }
+        },
+        // sass: {
+        //   build: {
+        //     files: [{
+        //       expand: true,
+        //       cwd: 'src',
+        //       src: ['*.scss'],
+        //       dest: 'build/build',
+        //       ext: '.css'
+        //     }]
+        //   }
+        // },
+        cssmin: { //压缩css
+            build: {
+                "files": {
+                    'build/css/main.css': ['src/css/*.css']//将数组里面的css文件压缩成一个目标文件
                 }
+            }
+        },
+        htmlmin: { //压缩html
+            build: {
+                options: { // Target options
+                    removeComments: true,
+                    collapseWhitespace: true
+                },
+                files: [{
+                    expand: true, // Enable dynamic expansion.
+                    cwd: 'src', // Src matches are relative to this path.
+                    src: ['*.html'], // Actual pattern(s) to match.
+                    dest: 'build/', // Destination path prefix.
+                    ext: '.html', // Dest filepaths will have this extension.
+                    extDot: 'first' // Extensions in filenames begin after the first dot
+                }]
             }
         }
     });
-
-    // 加载包含 "uglify" 任务的插件。
+    // 加载提供"uglify"任务的插件
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-
-    // 默认被执行的任务列表。
-    grunt.registerTask('default', ['uglify']);
-
-};
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    // grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    // 默认任务
+    grunt.registerTask('build', ['clean:build', 'copy:build', 'uglify:build', 'cssmin:build', 'htmlmin:build']);
+    grunt.registerTask('test', ['clean:build', 'copy:test']);
+}
