@@ -28,7 +28,7 @@ module.exports = function (grunt) {
                     expand: true,
                     cwd: 'src/js', //js源文件目录
                     src: '*.js', //所有js文件
-                    dest: 'build/js' //输出到此目录下
+                    dest: 'build' //输出到此目录下
                 }]
             }
         },

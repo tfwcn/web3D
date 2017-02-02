@@ -4,7 +4,7 @@ function TDCameraHelper(camera) {
     var leftRightRotation = 0;//水平旋转角度
     //cameraObj.matrixAutoUpdate=false;//关闭自动更新
     // 第一人称视觉旋转，x,y变换值(角度)
-    this.RotationViewMatrix = function (x, y) {
+    this.rotationViewMatrix = function (x, y) {
         leftRightRotation += Math.PI / 180 * x;
         upDownRotation += Math.PI / 180 * y;
         if (upDownRotation >= Math.PI * 2 || upDownRotation <= -Math.PI * 2) {
@@ -25,7 +25,12 @@ function TDCameraHelper(camera) {
         //cameraObj.position.set( 0, 0, 0 );//设置相机的位置坐标
         //cameraObj.matrix.multiply(rotWorldMatrix);
         //cameraObj.position.set( 60, 50, 100 );//设置相机的位置坐标
-        cameraObj.rotation.x+= Math.PI / 180 * x;
-        cameraObj.rotation.y+= Math.PI / 180 * y;
+        cameraObj.rotation.y -= Math.PI / 180 * x;
+        cameraObj.rotation.x += Math.PI / 180 * y;
+    }
+    this.moveViewMatrix = function (x, y, z) {
+        cameraObj.position.x += x;
+        cameraObj.position.y += y;
+        cameraObj.position.z += z;
     }
 }
