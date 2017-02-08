@@ -13,14 +13,14 @@ module.exports = function (grunt) {
                     {expand: true, cwd: 'src/', src: ['**'], dest: 'build/',flatten: true,filter: 'isFile'}
                 ]
             },
-            build: {
+            /*build: {
                 expand: true,
                 cwd: 'src/',
                 src: '**',//源文件目录下的所有文件
                 dest: 'build/',//目标文件路径，把源文件下的文件复制到该目录下
                 flatten: false,//用来指定是否忽略文件目录结构
                 filter: 'isFile',
-            }
+            }*/
         },
         uglify: {//压缩js文件
             build: {
@@ -45,9 +45,12 @@ module.exports = function (grunt) {
         // },
         cssmin: { //压缩css
             build: {
-                "files": {
-                    'build/css/main.css': ['src/css/*.css']//将数组里面的css文件压缩成一个目标文件
-                }
+                files: [{
+                    expand: true,
+                    cwd: 'src/css', //css源文件目录
+                    src: '*.css', //所有css文件
+                    dest: 'build' //输出到此目录下
+                }]
             }
         },
         htmlmin: { //压缩html
@@ -77,6 +80,6 @@ module.exports = function (grunt) {
     // grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     // 默认任务
-    grunt.registerTask('build', ['clean:build', 'copy:build', 'uglify:build', 'cssmin:build', 'htmlmin:build']);
+    grunt.registerTask('build', ['clean:build', 'uglify:build', 'cssmin:build', 'htmlmin:build']);
     grunt.registerTask('test', ['clean:build', 'copy:test']);
 }
