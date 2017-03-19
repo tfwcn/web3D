@@ -2,9 +2,9 @@ function TDCameraHelper(camera, position, target, up) {
     var cameraObj = camera;
     var upDownRotation = 0;//垂直旋转角度
     var leftRightRotation = 0;//水平旋转角度
-    var nowTarget = target;//水平旋转角度
-    var nowUpVector = up;//水平旋转角度
-    var nowPosition = position;//水平旋转角度
+    var nowTarget = target;//焦点
+    var nowUpVector = up;//上方向
+    var nowPosition = position;//视点
     var nowRotationMatrix = new THREE.Matrix4();//旋转矩阵
     cameraObj.matrixAutoUpdate = false;//关闭自动更新
     //旋转矩阵，矩阵、轴、弧度

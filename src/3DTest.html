@@ -7,6 +7,7 @@
     <!--<script type="application/javascript" src="https://unpkg.com/vue/dist/vue.runtime.min.js"></script>-->
     <script type="application/javascript" src="TDCameraHelper.js"></script>
     <script type="application/javascript" src="TDControlHelper.js"></script>
+    <script type="application/javascript" src="TDBoxHelper.js"></script>
     <!--<script src="https://cdn.bootcss.com/three.js/r83/three.js"></script>-->
     <!--<script src="3DTest.min.js"></script>-->
     <style type="text/css">
@@ -52,12 +53,11 @@
     var camera;
     function initCamera() {
         camera = new THREE.PerspectiveCamera(45, width / height, 1, 5000);//设置透视投影的相机,默认情况下相机的上方向为Y轴，右方向为X轴，沿着Z轴朝里（视野角：fov 纵横比：aspect 相机离视体积最近的距离：near 相机离视体积最远的距离：far）
-        camera.position.set(60, 50, -100);//设置相机的位置坐标
-        camera.up.x = 0;//设置相机的上为「x」轴方向
-        camera.up.y = 1;//设置相机的上为「y」轴方向
-        camera.up.z = 0;//设置相机的上为「z」轴方向
-        camera.lookAt({x: 0, y: 0, z: 0});//设置视野的中心坐标
-        //camera.matrixAutoUpdate=false;
+        window.addEventListener('resize', function () {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }, false);
     }
     //设置场景
     var scene;
@@ -69,11 +69,13 @@
     var light;
     var light2;
     function initLight() {
-        light = new THREE.PointLight(0xFFFFFF, 1.0, 0);//设置平行光源
-        light.position.set(100, 200, 100);//设置光源向量
+        light = new THREE.DirectionalLight(0xFFFFFF, 1.0);//设置平行光源
+        light.position.set(-20, 50, 0);//设置光源向量
+        //light = new THREE.PointLight(0xFFFFFF, 1.0, 1000);//设置点光源
+        //light.position.set(0, 50, 0);//设置光源向量
         light.castShadow = true;//显示阴影
-        light.shadow.mapSize.width = 2000;//阴影颗粒大小，影响锯齿
-        light.shadow.mapSize.height = 2000;//阴影颗粒大小，影响锯齿
+        //light.shadow.mapSize.width = 2000;//阴影颗粒大小，影响锯齿
+        //light.shadow.mapSize.height = 2000;//阴影颗粒大小，影响锯齿
         scene.add(light);// 追加光源到场景
         light2 = new THREE.AmbientLight(0x222222);//设置全局光源
         scene.add(light2);// 追加光源到场景
@@ -158,10 +160,26 @@
         initScene();
         initLight();
         //initObject();
-        CreateBlock();
-        var cameraHelper = new TDCameraHelper(camera, new THREE.Vector3(0, 10, -100), new THREE.Vector3(0, 0, 1), new THREE.Vector3(0, 1, 0));
+        //CreateBlock();
+        //摄像机操作类
+        var cameraHelper = new TDCameraHelper(camera, new THREE.Vector3(-50, 100, -50), new THREE.Vector3(0, 0, 1), new THREE.Vector3(0, 1, 0));
+        cameraHelper.rotationViewMatrix(-45, -20);
+        //输入操作类
         var controlHelper = new TDControlHelper(document.getElementById('canvas3d'));
         controlHelper.bindCamera(cameraHelper);//绑定操作
+        //*
+        var boxHelper = new TDBoxHelper(scene);
+        for (var i = 0; i < 20; i++) {
+            for (var j = 0; j < 20; j++) {
+                boxHelper.CreateBlock(0, i * 20, 0, j * 20, 20);
+            }
+        }
+        for (var i = 5; i < 15; i++) {
+            for (var j = 5; j < 15; j++) {
+                boxHelper.CreateBlock(0, i * 20, 20, j * 20, 20);
+            }
+        }
+        //*/
         var run = function () {
             //刷新画面
             renderer.clear();
