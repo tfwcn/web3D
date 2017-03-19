@@ -203,4 +203,31 @@ function TDControlHelper(element) {
     elementObj.addEventListener("touchend", touchUp, true);//触屏抬起
     elementObj.addEventListener("keydown", keyDown, true);//按键按下
     elementObj.addEventListener("keyup", keyUp, true);//按键抬起
+
+    //绑定摄像机
+    this.bindCamera = function (cameraHelper) {//鼠标或触摸
+        this.setFunRefresh(function (positionX, positionY, offsetX, offsetY) {
+            cameraHelper.rotationViewMatrix(offsetX * 0.1, -offsetY * 0.1);
+        });
+        this.setFunEnd(this.getFunRefresh());
+        //按键
+        this.setFunKeyHold(function (events) {
+            for (k in events) {
+                var event = events[k];
+                if (event.keyCode == 37 || event.keyCode == 65) {
+                    //left
+                    cameraHelper.moveViewMatrix(-1, 0, 0);
+                } else if (event.keyCode == 39 || event.keyCode == 68) {
+                    //right
+                    cameraHelper.moveViewMatrix(1, 0, 0);
+                } else if (event.keyCode == 38 || event.keyCode == 87) {
+                    //up
+                    cameraHelper.moveViewMatrix(0, 0, 1);
+                } else if (event.keyCode == 40 || event.keyCode == 83) {
+                    //down
+                    cameraHelper.moveViewMatrix(0, 0, -1);
+                }
+            }
+        });
+    };
 }
